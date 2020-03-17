@@ -31,35 +31,7 @@ export default class Banner extends React.Component {
                         <Jumbotron className="jumbo d-flex">
                             <Button className="grow pointer mv3-ns w-30 h-25 justify-content-center align-self-center " onClick={() => onRouteChange('register')} variant="primary">Get Started</Button>
                         </Jumbotron>
-                        {/* <CardDeck>
-                    <Card>
-                        <Card.Img class="pimg" variant="top" src="https://miro.medium.com/max/5000/1*q1_QMO1USctYFusXDaR79Q.png" />
-                        <Card.Body>
-                        <Card.Title>Categorization</Card.Title>
-                            <Card.Text>
-                                Categorizes all your transactions visually.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card>
-                        <Card.Img class="pimg" variant="top" src="https://images.ctfassets.net/fomw95h5b4ty/47yMjlia1TRu4aQLWZ08lP/598619998c3eeb0443104d02e4c701bf/Screen_Shot_2018-08-16_at_10.28.46_AM.png" />
-                        <Card.Body>
-                        <Card.Title>Financially Manage your Accounts</Card.Title>
-                            <Card.Text>
-                                Links all your bank accounts on one platform.{' '}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card>
-                        <Card.Img class="pimg" variant="top" src="https://thewilsonbeacon.com/wp-content/uploads/2019/05/creating_a_budget.jpg" />
-                        <Card.Body class="card-body text-secondary">
-                        <Card.Title>Budget</Card.Title>
-                            <Card.Text>
-                                Creates budgeting goals easily.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </CardDeck> */}
+                        
                         <div class="card-deck" >
 
                             <div className="card" className="card border-light mb-3 shadow-5">
@@ -96,20 +68,3 @@ export default class Banner extends React.Component {
         )
     }
 }
-
-
-{/* <Container fluid="true">
-                <Row >
-                    <Col lg={{ span: 8, offset: 2 }} md={{ span: 10, offset: 1 }} sm={{ span: 12, offset: 0 }}>
-                        <Navbar bg="light" sticky="top" variant="light">
-                            <Navbar.Brand href="#home">Finman</Navbar.Brand>
-                            <Nav className="ml-auto">
-                                <Nav.Link onClick={ () => onRouteChange('signin')} className="grow" href="#home">Log In</Nav.Link>
-                                <Nav.Link onClick={ () => onRouteChange('register')} className="grow" href="#features">Sign Up</Nav.Link>
-                            </Nav>
-                        </Navbar>
-                        <Banner id="home"> home</Banner>
-                        
-                    </Col>
-                </Row>
-            </Container> */}
