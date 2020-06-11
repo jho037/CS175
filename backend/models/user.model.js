@@ -7,9 +7,6 @@ const userSchema = new Schema({
     email: { type: String, required: true },
     password: { type: String, required: true },
     phonenumber: { type: Number, required: true },
-    accessToken: { type: String, required: false },
-    transactions: { type: Array, required: false },
-    goal: { type: Number, required: false },
 }, {
     timestamps: true,
 });

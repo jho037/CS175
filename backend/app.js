@@ -8,7 +8,6 @@ var cors = require("cors");
 var bcrypt = require("bcrypt");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var plaidRouter = require('./routes/plaid');
 require('dotenv').config();
 var app = express();
 
@@ -24,13 +23,6 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// const uri = process.env.ATLAS_URI;
-// mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }
-// );
-// const connection = mongoose.connection;
-// connection.once('open', () => {
-//   console.log("MongoDB database connection established successfully");
-// })
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 );
@@ -41,7 +33,6 @@ connection.once('open', () => {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/plaid', plaidRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

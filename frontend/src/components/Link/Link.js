@@ -3,7 +3,7 @@ import PlaidLink from "react-plaid-link";
 import axios from "axios";
 import { Container, Row, Col } from 'react-bootstrap';
 import { Navbar, Nav } from 'react-bootstrap';
-import './Link.css';
+// import './Link.css';
 
 class Link extends React.Component {
     constructor(props) {
