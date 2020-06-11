@@ -17,7 +17,7 @@ export default class Banner extends React.Component {
 
             <Container fluid="true">
                 <Row >
-                    <Col className="bg-white" lg={{ span: 10, offset: 1 }} md={{ span: 10, offset: 1 }} sm={{ span: 12, offset: 0 }}>
+                    <Col className="bg-white " lg={{ span: 10, offset: 1 }} md={{ span: 10, offset: 1 }} sm={{ span: 12, offset: 0 }}>
                         <Navbar bg="gray" sticky="top" variant="dark">
 
                             <Navbar.Brand onClick={() => onRouteChange('landing')} id="" href="#home" className="Garamond">FantasyKings</Navbar.Brand>

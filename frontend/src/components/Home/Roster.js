@@ -37,7 +37,7 @@ class Roster extends React.Component {
           <Row>
             <Col className="bg-white" >
               <h1>My Team</h1>
-              <table class="table">
+              <table class="table w-100">
                 <thead>
                   <tr>
                     <th scope="col">Player</th>

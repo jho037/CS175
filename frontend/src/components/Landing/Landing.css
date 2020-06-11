@@ -3,7 +3,7 @@
     background-position: top; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
-    
+    height: 40%;
     /* max-height: 250px; */
 }
 .container{
@@ -21,15 +21,15 @@
   height: auto;
 }
 
-@media only screen and (min-width: 1100px) {
+/* @media only screen and (min-width: 1100px) {
     .jumbo{
-        min-height: 650px;
+        min-height: 350px;
     }
   }
 
 @media only screen and (min-width: 900px) {
     .jumbo{
-        max-height: 250px;
+        max-height: 850px;
     }
   }
 
@@ -37,7 +37,7 @@
     .jumbo{
         max-height: 295px;
     }
-  }
+  } */
 
 /* @media only screen and (max-width: 600px) {
     #jumbo{
