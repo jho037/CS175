@@ -2,16 +2,18 @@ import React from 'react';
 import './App.css';
 import { Container, Row, Col, Jumbotron } from 'react-bootstrap';
 import Landing from './components/Landing/Landing.js'
-import HomeNav from './components/HomeNav/HomeNav'
+
 import SignIn from './components/SignIn/SignIn'
 import Register from './components/Register/Register'
 import Particles from 'react-particles-js'
-import Link from './components/Link/Link.js'
-import Bigchart from './components/Charts/Bigchart.js'
-import Transactions from './components/Transactions/transactions'
-import Goal from './components/Goal/Goal'
 import Accsettings from './components/Accsettings/Accsettings'
-import Cal from './components/Cal/Cal'
+import Home from './components/Home/Home'
+import Compare from './components/Home/Compare'
+import Team from './components/Home/Roster'
+import Stats from './components/Home/Stats'
+import Players from './components/Home/Table'
+import HomeNav from './components/Home/HomeNav'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -46,6 +48,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      players: [],
+      searchfield: '',
+      roster: [],
       route: 'landing',
       isSignedIn: false,
       user: {
@@ -63,9 +68,7 @@ class App extends React.Component {
       user: {
         id: data._id,
         name: data.name,
-        email: data.email,
-        accessToken: data.accessToken,
-        goal: data.goal
+        email: data.email
       }
     })
   }
@@ -83,27 +86,33 @@ class App extends React.Component {
     }
 
   }
-
-  updateTransactions(res, uid) {
-    fetch("http://localhost:9000/plaid/", {
+  addPlayer = (name) => {
+    console.log(name)
+    fetch('http://localhost:9000/addPlayer', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        accessToken: res,
-        days: 30
+        addPlayer: name
       })
     })
       .then(response => response.json())
       .then(res => {
-        console.log(res.transactions);
-        fetch("http://localhost:9000/users/update/transactions", {
-          method: 'post',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            id: uid,
-            transactions: res.transactions
-          })
-        })
+        console.log(res)
+        this.setState({ roster: res });
+      });
+  }
+
+  dropPlayer = (name) => {
+    fetch('http://localhost:9000/dropPlayer', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        addPlayer: name
+      })
+    })
+      .then(response => response.json())
+      .then(res => {
+        this.setState({ roster: res });
       });
   }
 
@@ -135,11 +144,15 @@ class App extends React.Component {
               </div>
 
               :
-              route === 'link' ?
-                <div>
-                  <Link user={this.state.user.id} loadUser={this.loadUser} onRouteChange={this.onRouteChange} updateTransactions={this.updateTransactions} />
-
-                </div>
+              route === 'players' ?
+                <Container fluid="true" >
+                  <Row >
+                    <Col className="bg-white" lg={{ span: 8, offset: 2 }} md={{ span: 10, offset: 1 }} sm={{ span: 12, offset: 0 }}>
+                      <HomeNav user={this.state.user.id} onRouteChange={this.onRouteChange} updateTransactions={this.updateTransactions} />
+                      <Players addPlayer={this.addPlayer}></Players>
+                    </Col>
+                  </Row>
+                </Container>
 
                 :
                 route === 'home' ?
@@ -148,35 +161,43 @@ class App extends React.Component {
                     <Row >
                       <Col className="bg-white" lg={{ span: 8, offset: 2 }} md={{ span: 10, offset: 1 }} sm={{ span: 12, offset: 0 }}>
                         <HomeNav user={this.state.user.id} onRouteChange={this.onRouteChange} updateTransactions={this.updateTransactions} />
-                        <Bigchart user={this.state.user} ></Bigchart>
+                        <Home></Home>
                       </Col>
                     </Row>
                   </Container>
-
-
                   :
-                  route === 'goal' ?
-                    <div>
-                      <Goal></Goal>
-                    </div>
+                  route === 'compare' ?
+
+                    <Container fluid="true" >
+                      <Row >
+                        <Col className="bg-white" lg={{ span: 8, offset: 2 }} md={{ span: 10, offset: 1 }} sm={{ span: 12, offset: 0 }}>
+                          <HomeNav user={this.state.user.id} onRouteChange={this.onRouteChange} updateTransactions={this.updateTransactions} />
+                          <Compare></Compare>
+                        </Col>
+                      </Row>
+                    </Container>
                     :
-                    route === 'transactions' ?
-                      <div>
-                        <Container fluid="true">
+                    route === 'team' ?
+
+                      <Container fluid="true" >
+                        <Row >
+                          <Col className="bg-white" lg={{ span: 8, offset: 2 }} md={{ span: 10, offset: 1 }} sm={{ span: 12, offset: 0 }}>
+                            <HomeNav user={this.state.user.id} onRouteChange={this.onRouteChange} updateTransactions={this.updateTransactions} />
+                            <Team dropPlayer={this.dropPlayer} roster={this.state.roster}></Team>
+                          </Col>
+                        </Row>
+                      </Container>
+                      :
+                      route === 'stats' ?
+
+                        <Container fluid="true" >
                           <Row >
                             <Col className="bg-white" lg={{ span: 8, offset: 2 }} md={{ span: 10, offset: 1 }} sm={{ span: 12, offset: 0 }}>
                               <HomeNav user={this.state.user.id} onRouteChange={this.onRouteChange} updateTransactions={this.updateTransactions} />
-                              <Transactions user={this.state.user} onRouteChange={this.onRouteChange} />
+                              <Stats></Stats>
                             </Col>
                           </Row>
                         </Container>
-
-                      </div>
-                      :
-                      route === 'goals' ?
-                        <div>
-                          <Goal loadUser={this.loadUser} user={this.state.user} onRouteChange={this.onRouteChange}></Goal>
-                        </div>
                         :
                         route === 'Accsettings' ?
                           <div>
