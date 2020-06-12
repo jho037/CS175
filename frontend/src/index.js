@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
-import Link from './components/Link/Link';
 
 
 ReactDOM.render(<App />, document.getElementById('root'));

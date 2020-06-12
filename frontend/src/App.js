@@ -51,7 +51,7 @@ class App extends React.Component {
       players: [],
       searchfield: '',
       roster: [],
-      route: 'home',
+      route: 'landing',
       isSignedIn: false,
       user: {
         id: '',

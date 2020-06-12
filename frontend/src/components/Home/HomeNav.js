@@ -19,7 +19,7 @@ class HomeNav extends React.Component {
         const { onRouteChange } = this.props;
         return (
             <Navbar bg="gray" expand="lg">
-                <Navbar.Brand href="/" className="Garamond">FantasyKings</Navbar.Brand>
+                <Navbar.Brand href="/" onClick={() => onRouteChange('home')} className="Garamond">FantasyKings</Navbar.Brand>
                 <img className="resize" src="https://img.icons8.com/color/100/000000/crown.png" />
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
